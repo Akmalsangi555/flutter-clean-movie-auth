@@ -1,20 +1,16 @@
 
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import 'package:webflow_auth_app/app/routes/app_routes.dart';
 import 'package:webflow_auth_app/core/error/exceptions.dart';
+import 'package:webflow_auth_app/core/services/storage_service.dart';
 import 'package:webflow_auth_app/features/domain/entities/user_entity.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/login_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/logout_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/signup_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/check_auth_status_use_case.dart';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
-import '../../../../core/services/storage_service.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find<AuthController>();

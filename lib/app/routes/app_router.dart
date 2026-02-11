@@ -1,12 +1,7 @@
+
+import 'route_views.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/auth/presentation/pages/login_page.dart';
-import '../../features/auth/presentation/pages/signup_page.dart';
-import '../../features/auth/presentation/pages/splash_page.dart';
-import '../../features/auth/presentation/pages/movies/home_page.dart';
-import '../../features/auth/presentation/controllers/auth_controller.dart';
-import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
-import '../../features/auth/presentation/pages/movies/movie_details_screen.dart';
 
 class AppRouter {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();

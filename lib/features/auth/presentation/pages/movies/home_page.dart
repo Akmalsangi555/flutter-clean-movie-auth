@@ -1,9 +1,9 @@
 
+import 'movie_card.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import '../../controllers/movie_controller.dart';
-import 'movie_card.dart';
+import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

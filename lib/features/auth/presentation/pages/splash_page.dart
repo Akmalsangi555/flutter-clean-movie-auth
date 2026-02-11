@@ -1,10 +1,6 @@
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import 'package:webflow_auth_app/app/routes/app_routes.dart';
-import '../../../auth/presentation/controllers/auth_controller.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

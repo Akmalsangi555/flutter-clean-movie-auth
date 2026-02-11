@@ -2,7 +2,6 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_secure_storage_web/flutter_secure_storage_web.dart';
 
 class StorageService {
   static final StorageService _instance = StorageService._internal();

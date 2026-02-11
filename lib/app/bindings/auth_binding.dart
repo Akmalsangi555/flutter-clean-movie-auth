@@ -1,21 +1,21 @@
+
 import 'package:get/get.dart';
 import 'package:webflow_auth_app/core/services/storage_service.dart';
-import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
-import 'package:webflow_auth_app/features/data/repositories/auth_repository_impl.dart';
-import 'package:webflow_auth_app/features/domain/repositories/movie_repository.dart';
-import 'package:webflow_auth_app/features/data/repositories/movie_repository_impl.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/check_auth_status_use_case.dart';
+import 'package:webflow_auth_app/core/network/network_api_service.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/login_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/logout_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/signup_use_case.dart';
-import '../../features/auth/presentation/controllers/auth_controller.dart';
-
-import '../../../../core/network/network_api_service.dart';
-import '../../features/data/data_sources/auth_local_datasource.dart';
-import '../../features/data/data_sources/auth_remote_datasource.dart';
-import '../../features/domain/repositories/auth_repository.dart';
+import 'package:webflow_auth_app/features/domain/repositories/auth_repository.dart';
+import 'package:webflow_auth_app/features/domain/repositories/movie_repository.dart';
+import 'package:webflow_auth_app/features/data/repositories/auth_repository_impl.dart';
+import 'package:webflow_auth_app/features/data/repositories/movie_repository_impl.dart';
+import 'package:webflow_auth_app/features/data/data_sources/auth_local_datasource.dart';
+import 'package:webflow_auth_app/features/data/data_sources/auth_remote_datasource.dart';
+import 'package:webflow_auth_app/features/domain/use_cases/check_auth_status_use_case.dart';
+import 'package:webflow_auth_app/features/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
+import 'package:webflow_auth_app/features/auth/presentation/controllers/auth_controller.dart';
+import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
 
 class AuthBinding extends Bindings {
   @override

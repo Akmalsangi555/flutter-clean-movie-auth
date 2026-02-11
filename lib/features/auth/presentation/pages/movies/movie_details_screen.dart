@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:webflow_auth_app/app/colors/app_colors.dart';
 import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
-import '../../controllers/movie_controller.dart';
+import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   final Results? movie;
@@ -92,7 +93,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withOpacity(0.7),
+                            Colors.black.withValues(alpha: 0.7),
                           ],
                         ),
                       ),
@@ -125,7 +126,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.amber.withOpacity(0.1),
+                          color: Colors.amber.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Row(
@@ -154,7 +155,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.1),
+                          color: Colors.blue.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Row(

@@ -10,13 +10,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class NetworkApiService extends BaseApiService {
   final http.Client _client;
-  final FlutterSecureStorage? _storage; // Keep as nullable
+  final FlutterSecureStorage? _storage;
 
   NetworkApiService({
     http.Client? client,
-    FlutterSecureStorage? storage, // This will receive from GetX
+    FlutterSecureStorage? storage,
   })  : _client = client ?? http.Client(),
-        _storage = storage; // REMOVE the default const constructor
+        _storage = storage;
 
   @override
   Future<dynamic> getApi(String url, {Map<String, String>? headers}) async {
@@ -67,75 +67,6 @@ class NetworkApiService extends BaseApiService {
     }
   }
 
-  @override
-  Future<dynamic> putApi(String url, dynamic data, {Map<String, String>? headers}) async {
-    try {
-      final finalHeaders = await _getHeaders(headers);
-      final response = await _client
-          .put(
-        Uri.parse(url),
-        headers: finalHeaders,
-        body: jsonEncode(data),
-      )
-          .timeout(const Duration(seconds: 30));
-
-      return _returnResponse(response);
-    } on SocketException {
-      throw InternetException();
-    } on TimeoutException {
-      throw RequestTimeOutException();
-    } catch (e) {
-      throw FetchDataException(e.toString());
-    }
-  }
-
-  @override
-  Future<dynamic> deleteApi(String url, {Map<String, String>? headers}) async {
-    try {
-      final finalHeaders = await _getHeaders(headers);
-      final response = await _client
-          .delete(Uri.parse(url), headers: finalHeaders)
-          .timeout(const Duration(seconds: 30));
-
-      return _returnResponse(response);
-    } on SocketException {
-      throw InternetException();
-    } on TimeoutException {
-      throw RequestTimeOutException();
-    } catch (e) {
-      throw FetchDataException(e.toString());
-    }
-  }
-
-  @override
-  Future<dynamic> multipartApi(
-      String url,
-      Map<String, String> data,
-      String filePath,
-      String fileField,
-      ) async {
-    try {
-      final finalHeaders = await _getHeaders();
-      var request = http.MultipartRequest('POST', Uri.parse(url));
-      request.headers.addAll(finalHeaders);
-      request.fields.addAll(data);
-
-      if (filePath.isNotEmpty) {
-        request.files.add(await http.MultipartFile.fromPath(fileField, filePath));
-      }
-
-      var streamedResponse = await request.send().timeout(const Duration(seconds: 60));
-      var response = await http.Response.fromStream(streamedResponse);
-
-      return _returnResponse(response);
-    } on SocketException {
-      throw InternetException();
-    } on TimeoutException {
-      throw RequestTimeOutException();
-    } catch (e) {
-      throw FetchDataException(e.toString());
-    }
-  }
 
   Future<Map<String, String>> _getHeaders([Map<String, String>? additionalHeaders]) async {
     final headers = {

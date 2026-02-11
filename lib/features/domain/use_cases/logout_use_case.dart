@@ -1,7 +1,7 @@
 
 import 'package:dartz/dartz.dart';
-import '../repositories/auth_repository.dart';
-import '../../../../core/error/exceptions.dart';
+import 'package:webflow_auth_app/core/error/exceptions.dart';
+import 'package:webflow_auth_app/features/domain/repositories/auth_repository.dart';
 
 class LogoutUseCase {
   final AuthRepository repository;

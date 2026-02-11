@@ -1,7 +1,8 @@
+
 import 'package:get/get.dart';
 import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
 
 class MovieController extends GetxController {
   final GetUpcomingMoviesUseCase _getUpcomingMoviesUseCase;
@@ -87,11 +88,9 @@ class MovieController extends GetxController {
   // Fetch movie by id (async remote fetch)
   Future<Results?> fetchMovieById(int id) async {
     try {
-      // First check if we already have it
       final localMovie = getMovieById(id);
       if (localMovie != null) return localMovie;
 
-      // If not, fetch from API
       isLoading.value = true;
       final result = await _getMovieDetailsUseCase(id);
 
@@ -114,18 +113,5 @@ class MovieController extends GetxController {
     } finally {
       isLoading.value = false;
     }
-  }
-
-  // Search movies locally
-  List<Results> searchMovies(String query) {
-    if (query.isEmpty) return movies;
-
-    return movies.where((movie) {
-      final title = movie.title?.toLowerCase() ?? '';
-      final overview = movie.overview?.toLowerCase() ?? '';
-      final searchQuery = query.toLowerCase();
-
-      return title.contains(searchQuery) || overview.contains(searchQuery);
-    }).toList();
   }
 }

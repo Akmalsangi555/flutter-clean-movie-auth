@@ -1,6 +1,5 @@
 
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class ApiService {
   static final ApiService _instance = ApiService._internal();
@@ -8,7 +7,7 @@ class ApiService {
   ApiService._internal();
 
   static const String baseUrl = 'https://api.themoviedb.org/3';
-  static const String bearerToken = 'YOUR_TMDB_BEARER_TOKEN';
+  static const String bearerToken = '';
 
   Future<http.Response> get(String endpoint, {Map<String, String>? queryParams}) async {
     final Uri uri = Uri.parse('$baseUrl$endpoint').replace(

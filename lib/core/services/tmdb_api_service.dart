@@ -1,14 +1,12 @@
 
-// lib/services/tmdb_api_service.dart
 import 'package:get/get.dart';
 import '../network/network_api_service.dart';
-import '../network/base_api_service.dart';
 
 class TmdbApiService extends GetxService {
   final NetworkApiService _networkApiService = Get.find<NetworkApiService>();
 
   static const String baseUrl = 'https://api.themoviedb.org/3';
-  static const String bearerToken = 'YOUR_TMDB_BEARER_TOKEN'; // Replace with actual token
+  static const String bearerToken = '';
 
   Future<dynamic> getUpcomingMovies({int page = 1}) async {
     final url = '$baseUrl/movie/upcoming?page=$page&language=en-US';

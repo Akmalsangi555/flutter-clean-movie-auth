@@ -1,9 +1,10 @@
+
+import 'package:get/get.dart';
 import 'package:dartz/dartz.dart';
 import 'package:webflow_auth_app/core/error/exceptions.dart';
 import 'package:webflow_auth_app/core/network/network_api_service.dart';
 import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
 import 'package:webflow_auth_app/features/domain/repositories/movie_repository.dart';
-import 'package:get/get.dart';
 
 class MovieRepositoryImpl implements MovieRepository {
   final NetworkApiService _apiService = Get.find<NetworkApiService>();
