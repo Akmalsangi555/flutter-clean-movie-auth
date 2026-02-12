@@ -1,8 +1,8 @@
 
 import 'package:get/get.dart';
-import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
+import 'package:webflow_auth_app/features/movie/data/models/movies_list_model.dart';
+import 'package:webflow_auth_app/features/movie/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:webflow_auth_app/features/movie/domain/use_cases/get_upcoming_movies_use_case.dart';
 
 class MovieController extends GetxController {
   final GetUpcomingMoviesUseCase _getUpcomingMoviesUseCase;

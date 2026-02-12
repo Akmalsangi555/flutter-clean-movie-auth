@@ -1,9 +1,9 @@
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
-import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
+import 'package:webflow_auth_app/features/movie/data/models/movies_list_model.dart';
+import 'package:webflow_auth_app/features/movie/presentation/controllers/movie_controller.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
   final Results? movie;
@@ -47,13 +47,13 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         // If still loading, show a loading indicator
         if (loading) {
           return Scaffold(
-            appBar: AppBar(backgroundColor: AppColors.primaryColor),
+            // appBar: AppBar(backgroundColor: AppColors.primaryColor),
             body: const Center(child: CircularProgressIndicator()),
           );
         }
 
         return Scaffold(
-          appBar: AppBar(backgroundColor: AppColors.primaryColor),
+          // appBar: AppBar(backgroundColor: AppColors.primaryColor),
           body: const Center(child: Text('Movie not found')),
         );
       }

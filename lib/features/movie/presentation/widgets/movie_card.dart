@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import 'package:webflow_auth_app/features/data/models/movies_list_model.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
+import 'package:webflow_auth_app/features/movie/data/models/movies_list_model.dart';
 
 class MovieCard extends StatelessWidget {
   final Results movie;

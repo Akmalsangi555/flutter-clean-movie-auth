@@ -3,9 +3,9 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 import 'base_api_service.dart';
-import '../error/exceptions.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
+import 'package:webflow_auth_app/core/error/exceptions.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class NetworkApiService extends BaseApiService {
@@ -49,13 +49,11 @@ class NetworkApiService extends BaseApiService {
 
     try {
       final finalHeaders = await _getHeaders(headers);
-      final response = await _client
-          .post(
+      final response = await _client.post(
         Uri.parse(url),
         headers: finalHeaders,
         body: data is Map ? jsonEncode(data) : data,
-      )
-          .timeout(const Duration(seconds: 30));
+      ).timeout(const Duration(seconds: 30));
 
       return _returnResponse(response);
     } on SocketException {

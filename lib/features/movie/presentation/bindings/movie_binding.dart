@@ -1,10 +1,10 @@
 
 import 'package:get/get.dart';
-import 'package:webflow_auth_app/features/domain/repositories/movie_repository.dart';
-import 'package:webflow_auth_app/features/data/repositories/movie_repository_impl.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_movie_details_use_case.dart';
-import 'package:webflow_auth_app/features/domain/use_cases/get_upcoming_movies_use_case.dart';
-import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
+import 'package:webflow_auth_app/features/movie/domain/repositories/movie_repository.dart';
+import 'package:webflow_auth_app/features/movie/data/repositories/movie_repository_impl.dart';
+import 'package:webflow_auth_app/features/movie/presentation/controllers/movie_controller.dart';
+import 'package:webflow_auth_app/features/movie/domain/use_cases/get_movie_details_use_case.dart';
+import 'package:webflow_auth_app/features/movie/domain/use_cases/get_upcoming_movies_use_case.dart';
 
 class MovieBinding extends Bindings {
   @override
@@ -18,7 +18,7 @@ class MovieBinding extends Bindings {
 
     // Controller
     Get.lazyPut<MovieController>(
-      () => MovieController(
+          () => MovieController(
         getUpcomingMoviesUseCase: Get.find<GetUpcomingMoviesUseCase>(),
         getMovieDetailsUseCase: Get.find<GetMovieDetailsUseCase>(),
       ),

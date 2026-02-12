@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
 import 'package:webflow_auth_app/features/auth/presentation/widgets/round_button.dart';
 import 'package:webflow_auth_app/features/auth/presentation/widgets/custom_text_field.dart';
 import 'package:webflow_auth_app/features/auth/presentation/controllers/auth_controller.dart';

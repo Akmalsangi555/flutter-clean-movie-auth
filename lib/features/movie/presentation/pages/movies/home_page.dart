@@ -1,9 +1,11 @@
 
-import 'movie_card.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
-import 'package:webflow_auth_app/features/auth/presentation/controllers/movie_controller.dart';
+import 'package:go_router/go_router.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
+import 'package:webflow_auth_app/features/movie/presentation/widgets/movie_card.dart';
+import 'package:webflow_auth_app/features/auth/presentation/controllers/auth_controller.dart';
+import 'package:webflow_auth_app/features/movie/presentation/controllers/movie_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,14 +13,44 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final movieController = Get.find<MovieController>();
+    final authController = Get.find<AuthController>();
+
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: _buildMoviesTab(movieController),
+      appBar: AppBar(
+        title: const Text('Movies List',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        automaticallyImplyLeading: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () async {
+            await authController.logout(context);
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/login');
+            }
+          },
+        ),
+
+        // Logout button - Explicit logout
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await authController.logout(context);
+              if (context.mounted) {
+                context.go('/login');
+              }
+            },
           ),
         ],
       ),
+      body: _buildMoviesTab(movieController),
     );
   }
 
@@ -54,8 +86,7 @@ class HomePage extends StatelessWidget {
                     color: Colors.red.shade300,
                   ),
                   const SizedBox(height: 16),
-                  Text(
-                    'Failed to load movies',
+                  Text('Failed to load movies',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -101,10 +132,10 @@ class HomePage extends StatelessWidget {
             itemCount: controller.movies.length + (controller.isLoadingMore.value ? 1 : 0),
             itemBuilder: (context, index) {
               if (index == controller.movies.length) {
-                return const Center(
+                return Center(
                   child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: CircularProgressIndicator(),
+                    padding: const EdgeInsets.all(16),
+                    child: CircularProgressIndicator(color: AppColors.primaryColor),
                   ),
                 );
               }

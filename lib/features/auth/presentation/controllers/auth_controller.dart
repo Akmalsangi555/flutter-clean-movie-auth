@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
 import 'package:webflow_auth_app/core/error/exceptions.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
 import 'package:webflow_auth_app/core/services/storage_service.dart';
 import 'package:webflow_auth_app/features/domain/entities/user_entity.dart';
 import 'package:webflow_auth_app/features/domain/use_cases/login_use_case.dart';
@@ -19,7 +19,7 @@ class AuthController extends GetxController {
   final SignupUseCase _signupUseCase;
   final CheckAuthStatusUseCase _checkAuthStatusUseCase;
   final LogoutUseCase _logoutUseCase;
-  final StorageService _storageService;
+  final StorageService storageServices;
 
   AuthController({
     required LoginUseCase loginUseCase,
@@ -31,7 +31,7 @@ class AuthController extends GetxController {
         _signupUseCase = signupUseCase,
         _checkAuthStatusUseCase = checkAuthStatusUseCase,
         _logoutUseCase = logoutUseCase,
-        _storageService = storageService;
+        storageServices = storageService;
 
   // Observable variables
   final isLoading = false.obs;
@@ -218,7 +218,8 @@ class AuthController extends GetxController {
           );
 
           // Navigate with go_router
-          context.go('/home');
+          // context.go('/home');
+          context.push('/home');
         },
       );
     } catch (e) {
@@ -482,17 +483,17 @@ class AuthController extends GetxController {
         },
             (_) {
           _clearSession();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text('Logged out successfully'),
-              backgroundColor: Colors.green.shade900,
-              behavior: SnackBarBehavior.floating,
-              margin: const EdgeInsets.all(16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: const Text('Logged out successfully'),
+          //     backgroundColor: Colors.green.shade900,
+          //     behavior: SnackBarBehavior.floating,
+          //     margin: const EdgeInsets.all(16),
+          //     shape: RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.circular(8),
+          //     ),
+          //   ),
+          // );
           context.go('/login');
         },
       );

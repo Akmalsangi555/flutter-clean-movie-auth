@@ -1,19 +1,17 @@
 
 import 'package:get/get.dart';
+import 'core/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'app/bindings/auth_binding.dart';
 import 'core/services/storage_service.dart';
-import 'package:webflow_auth_app/app/routes/app_router.dart';
+import 'features/auth/presentation/bindings/auth_binding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize storage service
   final storageService = StorageService();
   await storageService.init();
   Get.put(storageService, permanent: true);
 
-  // Initialize auth binding
   await AuthBinding().dependencies();
 
   runApp(const MyApp());
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
-      title: 'Your App Name',
+      title: 'web app',
       debugShowCheckedModeBanner: false,
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,

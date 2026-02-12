@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:webflow_auth_app/app/colors/app_colors.dart';
+import 'package:webflow_auth_app/core/constants/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
