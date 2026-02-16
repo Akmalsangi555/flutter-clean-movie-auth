@@ -218,8 +218,8 @@ class AuthController extends GetxController {
           );
 
           // Navigate with go_router
-          // context.go('/home');
-          context.push('/home');
+          context.go('/home');
+          // context.push('/home');
         },
       );
     } catch (e) {
@@ -467,7 +467,7 @@ class AuthController extends GetxController {
 
       result.fold(
             (exception) {
-          _clearSession();
+          clearSession();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: const Text('Logged out locally'),
@@ -482,7 +482,7 @@ class AuthController extends GetxController {
           context.go('/login');
         },
             (_) {
-          _clearSession();
+          clearSession();
           // ScaffoldMessenger.of(context).showSnackBar(
           //   SnackBar(
           //     content: const Text('Logged out successfully'),
@@ -498,14 +498,14 @@ class AuthController extends GetxController {
         },
       );
     } catch (e) {
-      _clearSession();
+      clearSession();
       context.go('/login');
     } finally {
       isLoading.value = false;
     }
   }
 
-  void _clearSession() {
+  void clearSession() {
     isAuthenticated.value = false;
     user.value = null;
     clearControllers();

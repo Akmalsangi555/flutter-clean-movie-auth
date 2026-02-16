@@ -69,14 +69,13 @@ class AppRouter {
   );
 
   static Future<String?> _handleRedirect(
-    BuildContext context,
-    GoRouterState state,
-  ) async {
+      BuildContext context,
+      GoRouterState state,
+      ) async {
     final authController = AuthController.to;
 
     // Wait for auth check to complete
     if (authController.isCheckingAuth.value) {
-      // Stay where we are while checking auth to preserve the URL
       return null;
     }
 
@@ -85,20 +84,24 @@ class AppRouter {
 
     // If authenticated
     if (isAuthenticated) {
-      // If we are on auth-related pages, go to home
-      if (location == '/login' ||
-          location == '/signup' ||
-          location == '/splash') {
+      // Allow accessing login page (browser back will trigger auto-logout)
+      if (location == '/login') {
+        return null;
+      }
+
+      // If we are on signup or splash, go to home
+      if (location == '/signup' || location == '/splash') {
         return '/home';
       }
-      // Otherwise stay where we are (e.g., /movie-details)
+
+      // Otherwise stay where we are
       return null;
     }
 
     // If not authenticated
     if (!isAuthenticated) {
       // Protect authenticated routes
-      if (location == '/home' || location == '/movie-details') {
+      if (location == '/home' || location.startsWith('/movie-details')) {
         return '/login';
       }
       // If we are on splash, go to login
@@ -110,6 +113,49 @@ class AppRouter {
 
     return null;
   }
+
+  // static Future<String?> _handleRedirect(
+  //   BuildContext context,
+  //   GoRouterState state,
+  // ) async {
+  //   final authController = AuthController.to;
+  //
+  //   // Wait for auth check to complete
+  //   if (authController.isCheckingAuth.value) {
+  //     // Stay where we are while checking auth to preserve the URL
+  //     return null;
+  //   }
+  //
+  //   final isAuthenticated = authController.isAuthenticated.value;
+  //   final location = state.matchedLocation;
+  //
+  //   // If authenticated
+  //   if (isAuthenticated) {
+  //     // If we are on auth-related pages, go to home
+  //     if (location == '/login' ||
+  //         location == '/signup' ||
+  //         location == '/splash') {
+  //       return '/home';
+  //     }
+  //     // Otherwise stay where we are (e.g., /movie-details)
+  //     return null;
+  //   }
+  //
+  //   // If not authenticated
+  //   if (!isAuthenticated) {
+  //     // Protect authenticated routes
+  //     if (location == '/home' || location == '/movie-details') {
+  //       return '/login';
+  //     }
+  //     // If we are on splash, go to login
+  //     if (location == '/splash') {
+  //       return '/login';
+  //     }
+  //     return null;
+  //   }
+  //
+  //   return null;
+  // }
 }
 
 // Listenable for auth state changes
